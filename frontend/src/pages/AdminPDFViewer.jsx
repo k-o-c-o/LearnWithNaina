@@ -3,7 +3,11 @@ import { useParams } from "react-router-dom";
 import AdminLayout from "../layouts/AdminLayout";
 import PageBanner from "../components/PageBanner";
 import { getLesson } from "../services/lessonService";
-import { Document, Page } from "react-pdf";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/TextLayer.css";
+import "react-pdf/dist/Page/AnnotationLayer.css";
+import pdfWorker from "pdfjs-dist/build/pdf.worker.min.mjs?url";
+pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
 import "../styles/AdminPDFViewer.css";
 
 function AdminPDFViewer() {
@@ -12,7 +16,7 @@ function AdminPDFViewer() {
     const [lesson, setLesson] = useState(null);
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
-    const [scale, setScale] = useState(1.2);
+    const [scale, setScale] = useState(0.8);
 
     useEffect(() => {
 
@@ -46,12 +50,11 @@ function AdminPDFViewer() {
     }
 
     const pdf =lesson.pdfs[Number(pdfIndex)];
-    console.log(pdf.url);
-
     function onDocumentLoadSuccess({ numPages }) {
         setNumPages(numPages);
         setPageNumber(1);
     }
+
     return(
 
         <AdminLayout>
@@ -64,16 +67,20 @@ function AdminPDFViewer() {
 
             <div className="pdf-container">
 
-                console.log("PDF URL:", pdf.url);
-                <Document
-                    file={pdf.url}
-                    onLoadSuccess={onDocumentLoadSuccess}
-                >
-                    <Page
-                        pageNumber={pageNumber}
-                        scale={scale}
-                    />
-                </Document>
+                
+                <div className="document-wrapper">
+                    <Document
+                        file={pdf.url}
+                        loading={<p>Loading PDF...</p>}
+                        onLoadSuccess={onDocumentLoadSuccess}
+                        onLoadError={(error) => console.error(error)}
+                    >
+                        <Page
+                            pageNumber={pageNumber}
+                            scale={scale}
+                        />
+                    </Document>
+                </div>
 
                 <div className="pdf-controls">
 
@@ -89,8 +96,10 @@ function AdminPDFViewer() {
                 </span>
 
                 <button
-                    disabled={pageNumber >= numPages}
-                    onClick={() => setPageNumber(pageNumber + 1)}
+                    disabled={pageNumber === numPages}
+                    onClick={() =>
+                        setPageNumber((prev) => prev + 1)
+                    }
                 >
                     Next ▶
                 </button>

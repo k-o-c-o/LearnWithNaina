@@ -1,9 +1,8 @@
-.pdf-viewer {
-    display: flex;
-    justify-content: center;
-    padding: 30px;
+.pdf-viewer{
+    display:flex;
+    justify-content:center;
+    padding:40px;
     background:#f5f7f6;
-    min-height:calc(100vh - 120px);
 }
 
 

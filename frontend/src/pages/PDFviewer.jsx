@@ -2,6 +2,15 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { getMaterial } from "../services/materialService";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/TextLayer.css";
+import "react-pdf/dist/Page/AnnotationLayer.css";
+import pdfWorker from "pdfjs-dist/build/pdf.worker.min.mjs?url";
+
+import "../styles/PDFViewer.css";
+
+pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
+
 
 function PDFViewer() {
   const { materialId } =
@@ -14,6 +23,12 @@ function PDFViewer() {
   const [currentPdf,
     setCurrentPdf] =
     useState(0);
+
+  const [numPages, setNumPages] = useState(null);
+
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const [scale, setScale] = useState(0.8);
 
   useEffect(() => {
     loadMaterial();
@@ -32,6 +47,17 @@ function PDFViewer() {
   if (!material)
     return <div>Loading...</div>;
 
+  console.log(material);
+  console.log(material.pdfs);
+  console.log(material.pdfs[currentPdf]);
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+    setPageNumber(1);
+  }
+
+  
+
   return (
     <>
       <Navbar />
@@ -45,27 +71,74 @@ function PDFViewer() {
           {material.title}
         </h1>
 
-        <div
-          style={{
-            height: "700px",
-            border:
-              "1px solid #ddd"
-          }}
+       <div className="pdf-viewer">
+
+    <div className="pdf-container">
+
+        <Document
+            file={material.pdfs[currentPdf]}
+            loading={<p>Loading PDF...</p>}
+            onLoadSuccess={onDocumentLoadSuccess}
         >
-          <iframe
-                title="pdf"
+            <Page
+                pageNumber={pageNumber}
+                scale={scale}
+            />
+        </Document>
 
-                src={
-                    material.pdfs[
-                    currentPdf
-                    ]
+        <div className="pdf-controls">
+
+            <button
+                disabled={pageNumber === 1}
+                onClick={() =>
+                    setPageNumber(prev => prev - 1)
                 }
+            >
+                ◀ Previous
+            </button>
 
-                width="100%"
+            <span>
+                Page {pageNumber} of {numPages || "--"}
+            </span>
 
-                height="100%"
-           />
+            <button
+                disabled={pageNumber === numPages}
+                onClick={() =>
+                    setPageNumber(prev => prev + 1)
+                }
+            >
+                Next ▶
+            </button>
+
         </div>
+
+        <div className="zoom-controls">
+
+            <button
+                onClick={() =>
+                    setScale(prev => Math.max(prev - 0.2, 0.4))
+                }
+            >
+                -
+            </button>
+
+            <span>
+                {Math.round(scale * 100)}%
+            </span>
+
+            <button
+                onClick={() =>
+                    setScale(prev => Math.min(prev + 0.2, 3))
+                }
+            >
+                +
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
         <br />
 
