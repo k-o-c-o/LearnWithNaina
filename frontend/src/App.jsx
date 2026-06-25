@@ -34,7 +34,6 @@ function App() {
         <Route path="/admin/course/:courseId" element={<AdminOnly> <AdminCoursePage/></AdminOnly>}/>
         <Route path="/admin/lesson/:lessonId" element={ <AdminOnly><LessonWorkspace /></AdminOnly>}/>
         <Route path="/admin/pdf/:lessonId/:pdfIndex"element={<AdminOnly><AdminPDFViewer /> </AdminOnly>}/>
-        <Route path="/admin/pdf/:lessonId/:pdfIndex" element={<AdminOnly><AdminPDFViewer /> </AdminOnly>}/>
       </Routes>
     </BrowserRouter>
   );

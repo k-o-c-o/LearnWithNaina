@@ -1,18 +1,49 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/Navbar.css";
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    navigate("/");
+  };
+
   return (
     <nav className="navbar">
-      <Link to="/dashboard">My Courses</Link>
 
-      <Link to="/add-courses">
-        Add Courses
-      </Link>
+    <div className="navbar-content">
 
-      <Link to="/grades">Grades</Link>
+        <div className="logo">
+            Learn with Naina
+        </div>
 
-      <Link to="/login">Logout</Link>
-    </nav>
+        <div className="nav-links">
+
+            <Link to="/dashboard">
+                My Courses
+            </Link>
+
+            <Link to="/add-courses">
+                Add Courses
+            </Link>
+
+            <button
+                className="logout-btn"
+                onClick={logout}
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</nav>
   );
 }
 

@@ -26,7 +26,7 @@ function CoursePage() {
     <>
       <Navbar />
 
-      <div style={{ padding: "40px" }}>
+      <div className = "page-container" style={{ padding: "40px" }}>
         <h1>Lessons</h1>
 
         {lessons.map((lesson) => (

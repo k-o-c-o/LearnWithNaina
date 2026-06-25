@@ -45,9 +45,11 @@ function Dashboard() {
                     )
                 }
             >
-              <div
+              <img
+                src={enrollment.courseId.image}
+                alt={enrollment.courseId.title}
                 className="course-image"
-              />
+            />
 
               <h3>
                 {
