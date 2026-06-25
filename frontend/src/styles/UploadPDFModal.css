@@ -1,0 +1,56 @@
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:1000;
+}
+
+.modal{
+    background:white;
+
+    width:500px;
+
+    border-radius:14px;
+
+    padding:30px;
+}
+
+.modal h2{
+    color:#1B5E20;
+    margin-bottom:25px;
+}
+
+.modal input,
+.modal textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:18px;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+}
+
+.modal textarea{
+
+    height:120px;
+
+    resize:none;
+}
+
+.modal-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+}

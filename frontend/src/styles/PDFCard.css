@@ -1,0 +1,41 @@
+.pdf-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    box-shadow:0 6px 15px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.pdf-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 24px rgba(0,0,0,.12);
+}
+
+.pdf-icon{
+
+    font-size:32px;
+}
+
+.pdf-title{
+
+    font-size:18px;
+
+    color:#1B5E20;
+
+    font-weight:600;
+}

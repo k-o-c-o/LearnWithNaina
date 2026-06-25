@@ -1,0 +1,15 @@
+.admin-layout{
+
+    display:flex;
+}
+
+.admin-main{
+
+    margin-left:240px;
+
+    width:100%;
+
+    min-height:100vh;
+
+    background:#F8FAF8;
+}

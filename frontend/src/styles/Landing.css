@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.landing-container {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  background: white;
+}
+
+.landing-container h1 {
+  margin: 0;
+
+  color: #1B5E20;
+
+  font-size: 5rem;
+
+  font-family: "Libre Baskerville", serif;
+
+  font-weight: 700;
+}
+
+.landing-container h2 {
+  margin-top: 8px;
+  margin-bottom: 40px;
+
+  color: #2E7D32;
+
+  font-size: 2.2rem;
+
+  font-family: "Libre Baskerville", serif;
+
+  font-weight: 400;
+}
+
+.landing-container button {
+  padding: 14px 34px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #1B5E20;
+
+  color: white;
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.landing-container button:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 8px 20px rgba(27, 94, 32, 0.2);
+}

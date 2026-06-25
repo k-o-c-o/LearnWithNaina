@@ -1,12 +1,17 @@
+const dotenv = require("dotenv");
+//load env variables
+dotenv.config();
+
 //imports
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
-
-//load env variables
-dotenv.config();
+const courseRoutes = require("./routes/courseRoutes");
+const enrollmentRoutes =require("./routes/enrollmentRoutes");
+const lessonRoutes = require("./routes/lessonRoutes");
+const materialRoutes = require("./routes/materialRoutes");
+const uploadRoutes =require("./routes/uploadRoutes");
 
 //connect to MongoDB
 connectDB();
@@ -16,6 +21,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
+app.use("/api/courses", courseRoutes);
+app.use( "/api/enrollments",enrollmentRoutes);
+app.use("/api/lessons",lessonRoutes);
+app.use("/api/materials",materialRoutes);
+app.use("/api/upload",uploadRoutes);
 
 //Home route
 app.get("/",(req,res)=>{

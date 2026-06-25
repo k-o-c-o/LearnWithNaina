@@ -1,0 +1,22 @@
+.lesson-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    cursor: pointer;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+
+    transition: 0.3s;
+}
+
+.lesson-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.lesson-card h3 {
+    text-align: center;
+    color: #1B5E20;
+    margin: 0;
+}

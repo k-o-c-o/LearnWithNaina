@@ -1,0 +1,38 @@
+.course-tabs{
+    display:flex;
+    gap:15px;
+    margin:30px 0;
+}
+
+.tab{
+
+    padding:12px 25px;
+
+    border:2px solid #1B5E20;
+
+    border-radius:25px;
+
+    background:white;
+
+    color:#1B5E20;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.tab:hover{
+
+    background:#E8F5E9;
+}
+
+.active{
+
+    background:#1B5E20;
+
+    color:white;
+}

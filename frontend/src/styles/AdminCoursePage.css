@@ -1,0 +1,27 @@
+.course-page{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:40px;
+}
+
+.lesson-header{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-bottom:35px;
+}
+
+.lesson-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fill,minmax(260px,1fr));
+
+    gap:25px;
+}

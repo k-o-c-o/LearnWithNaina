@@ -1,0 +1,44 @@
+.course-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(250px, 1fr));
+
+  gap: 25px;
+
+  margin-top: 40px;
+}
+
+.course-card {
+  border: 1px solid #ddd;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  background: white;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.course-image {
+  height: 180px;
+
+  background: #d8ead7;
+}
+
+.course-card h3 {
+  text-align: center;
+
+  padding: 15px;
+
+  color: #1B5E20;
+}
