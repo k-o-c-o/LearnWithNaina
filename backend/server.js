@@ -17,12 +17,6 @@ const uploadRoutes =require("./routes/uploadRoutes");
 connectDB();
 
 const app = express();
-app.use(express.json());
-app.use("/api/auth", authRoutes);
-app.use("/api/courses", courseRoutes);
-app.use( "/api/enrollments",enrollmentRoutes);
-app.use("/api/lessons",lessonRoutes);
-app.use("/api/upload",uploadRoutes);
 app.use(
   cors({
     origin: [
@@ -34,6 +28,13 @@ app.use(
     credentials: true
   })
 );
+app.use(express.json());
+app.use("/api/auth", authRoutes);
+app.use("/api/courses", courseRoutes);
+app.use( "/api/enrollments",enrollmentRoutes);
+app.use("/api/lessons",lessonRoutes);
+app.use("/api/upload",uploadRoutes);
+
 
 //Home route
 app.get("/",(req,res)=>{
