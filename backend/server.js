@@ -10,6 +10,7 @@ const authRoutes = require("./routes/authRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const enrollmentRoutes =require("./routes/enrollmentRoutes");
 const lessonRoutes = require("./routes/lessonRoutes");
+
 const uploadRoutes =require("./routes/uploadRoutes");
 
 //connect to MongoDB
