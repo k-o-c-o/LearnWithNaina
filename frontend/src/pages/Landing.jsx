@@ -8,7 +8,7 @@ function Landing() {
     <div className="landing-container">
       <h1>Learn</h1>
 
-      <h2>with Naina Edwin</h2>
+      <h2>with Naina</h2>
 
       <button
         onClick={() => navigate("/login")}

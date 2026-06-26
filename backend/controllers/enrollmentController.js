@@ -30,20 +30,18 @@ const enrollStudent = async (req, res) => {
   }
 };
 
-const getStudentEnrollments = async (
-  req,
-  res
-) => {
+const getStudentEnrollments = async (req, res) => {
   try {
-    const enrollments =
-      await Enrollment.find({
-        studentId: req.params.studentId
-      }).populate("courseId");
+
+    const allEnrollments = await Enrollment.find();
+    const enrollments = await Enrollment.find({
+      studentId: req.params.studentId,
+    }).populate("courseId");
 
     res.json(enrollments);
   } catch (error) {
     res.status(500).json({
-      message: error.message
+      message: error.message,
     });
   }
 };
