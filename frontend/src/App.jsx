@@ -7,7 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import AddCourses from "./pages/AddCourses";
 import CoursePage from "./pages/CoursePage";
 import MaterialsPage from "./pages/MaterialsPage";
-import PDFviewer from "./pages/PDFViewer";
+import PDFViewer from "./pages/PDFViewer";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminOnly from "./components/AdminOnly";
 import AdminCoursePage from "./pages/AdminCoursePage";
@@ -23,7 +23,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/add-courses" element={<AddCourses />} />
-        <Route path="/grades" element={<Grades />} />
         <Route path="/course/:courseId" element={<CoursePage />}/>
         <Route path="/lesson/:lessonId" element={<MaterialsPage />}/>
         <Route path="/material/:lessonId/:pdfIndex" element={<PDFViewer />}/>
