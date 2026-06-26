@@ -17,14 +17,23 @@ const uploadRoutes =require("./routes/uploadRoutes");
 connectDB();
 
 const app = express();
-
-app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/courses", courseRoutes);
 app.use( "/api/enrollments",enrollmentRoutes);
 app.use("/api/lessons",lessonRoutes);
 app.use("/api/upload",uploadRoutes);
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://learn-with-naina.vercel.app",
+      "https://learn-with-naina-489flmafq-naina-edwin.vercel.app",
+      "https://learn-with-naina-git-main-naina-edwin.vercel.app"
+    ],
+    credentials: true
+  })
+);
 
 //Home route
 app.get("/",(req,res)=>{
