@@ -28,7 +28,7 @@ function App() {
         <Route path="/grades" element={<Grades />} />
         <Route path="/course/:courseId" element={<CoursePage />}/>
         <Route path="/lesson/:lessonId" element={<MaterialsPage />}/>
-        <Route path="/material/:materialId" element={<PDFViewer />}/>
+        <Route path="/material/:lessonId/:pdfIndex" element={<PDFViewer />}/>
         <Route path="/admin" element={<AdminOnly> <AdminDashboard /> </AdminOnly>}/>
         <Route path="/admin/course/:courseId/students" element={ <AdminOnly> <StudentsEnrolled/> </AdminOnly>}/>
         <Route path="/admin/course/:courseId" element={<AdminOnly> <AdminCoursePage/></AdminOnly>}/>

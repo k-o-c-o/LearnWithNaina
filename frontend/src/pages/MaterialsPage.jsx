@@ -1,69 +1,61 @@
-import { useParams } from "react-router-dom";
-import {useEffect,useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { getMaterials } from "../services/materialService";
-import { useNavigate } from "react-router-dom";
+import { getLesson } from "../services/lessonService";
 
 function MaterialsPage() {
-  const navigate = useNavigate();
-  const { lessonId } =
-    useParams();
+    const navigate = useNavigate();
+    const { lessonId } = useParams();
 
-  const [materials,
-    setMaterials] =
-    useState([]);
+    const [lesson, setLesson] = useState(null);
 
-  useEffect(() => {
-    loadMaterials();
-  }, []);
+    useEffect(() => {
+        loadLesson();
+    }, []);
 
-  const loadMaterials =
-    async () => {
-      const data =
-        await getMaterials(
-          lessonId
-        );
-
-      setMaterials(data);
+    const loadLesson = async () => {
+        try {
+            const data = await getLesson(lessonId);
+            setLesson(data);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
-  return (
-    <>
-      <Navbar />
+    if (!lesson) {
+        return <div>Loading...</div>;
+    }
 
-      <div
-        style={{
-          padding: "40px"
-        }}
-      >
-        <h1>Materials</h1>
+    return (
+        <>
+            <Navbar />
 
-        {materials.map(
-          (material) => (
-            <div
-                key={material._id}
-                onClick={() =>
-                navigate(
-                    `/material/${material._id}`
-                )
-                }
-                
-              style={{
-                border:
-                  "1px solid #ddd",
-                padding:
-                  "20px",
-                marginBottom:
-                  "20px"
-              }}
-            >
-              {material.title}
+            <div style={{ padding: "40px" }}>
+                <h1>{lesson.title}</h1>
+
+                {lesson.pdfs.length === 0 ? (
+                    <p>No PDFs uploaded yet.</p>
+                ) : (
+                    lesson.pdfs.map((pdf, index) => (
+                        <div
+                            key={index}
+                            onClick={() =>
+                                navigate(`/material/${lessonId}/${index}`)
+                            }
+                            style={{
+                                border: "1px solid #ddd",
+                                padding: "20px",
+                                marginBottom: "20px",
+                                cursor: "pointer"
+                            }}
+                        >
+                            📄 {pdf.title}
+                        </div>
+                    ))
+                )}
             </div>
-          )
-        )}
-      </div>
-    </>
-  );
+        </>
+    );
 }
 
 export default MaterialsPage;

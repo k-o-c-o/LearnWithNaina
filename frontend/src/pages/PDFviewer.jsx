@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { getMaterial } from "../services/materialService";
+import { getLesson } from "../services/lessonService";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/TextLayer.css";
 import "react-pdf/dist/Page/AnnotationLayer.css";
@@ -13,51 +13,34 @@ pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 
 function PDFViewer() {
-  const { materialId } =
-    useParams();
-
-  const [material,
-    setMaterial] =
-    useState(null);
-
-  const [currentPdf,
-    setCurrentPdf] =
-    useState(0);
-
+  const { lessonId, pdfIndex } = useParams();
+  const [lesson, setLesson] = useState(null);
   const [numPages, setNumPages] = useState(null);
-
   const [pageNumber, setPageNumber] = useState(1);
-
   const [scale, setScale] = useState(0.8);
 
   useEffect(() => {
-    loadMaterial();
-  }, []);
+    loadLesson();
+  }, []); 
 
-  const loadMaterial =
-    async () => {
-      const data =
-        await getMaterial(
-          materialId
-        );
+  const loadLesson = async () => {
+    const data = await getLesson(lessonId);
+    setLesson(data);
+  };
 
-      setMaterial(data);
-    };
-
-  if (!material)
+  if (!lesson)
     return <div>Loading...</div>;
-
-  console.log(material);
-  console.log(material.pdfs);
-  console.log(material.pdfs[currentPdf]);
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
     setPageNumber(1);
   }
 
-  
+  const pdf = lesson.pdfs[Number(pdfIndex)];
 
+  console.log("Lesson:", lesson);
+  console.log("PDF:", pdf);
+  
   return (
     <>
       <Navbar />
@@ -68,7 +51,7 @@ function PDFViewer() {
         }}
       >
         <h1>
-          {material.title}
+          {pdf.title}
         </h1>
 
        <div className="pdf-viewer">
@@ -76,10 +59,11 @@ function PDFViewer() {
     <div className="pdf-container">
 
         <Document
-            file={material.pdfs[currentPdf]}
-            loading={<p>Loading PDF...</p>}
-            onLoadSuccess={onDocumentLoadSuccess}
+          file={pdf.url}
+          loading={<p>Loading PDF...</p>}
+          onLoadSuccess={onDocumentLoadSuccess}
         >
+        
             <Page
                 pageNumber={pageNumber}
                 scale={scale}
@@ -140,33 +124,6 @@ function PDFViewer() {
 
 </div>
 
-        <br />
-
-        <button
-            onClick={() =>
-            setCurrentPdf(
-                Math.max(
-                currentPdf - 1,
-                0
-                )
-            )
-            }
-            >
-            Previous
-        </button>
-
-        <button
-            onClick={() =>
-            setCurrentPdf(
-                Math.min(
-                currentPdf + 1,
-                material.pdfs.length - 1
-                )
-            )
-            }
-            >
-            Next
-        </button>
       </div>
     </>
   );

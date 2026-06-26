@@ -10,7 +10,6 @@ const authRoutes = require("./routes/authRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const enrollmentRoutes =require("./routes/enrollmentRoutes");
 const lessonRoutes = require("./routes/lessonRoutes");
-const materialRoutes = require("./routes/materialRoutes");
 const uploadRoutes =require("./routes/uploadRoutes");
 
 //connect to MongoDB
@@ -24,7 +23,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/courses", courseRoutes);
 app.use( "/api/enrollments",enrollmentRoutes);
 app.use("/api/lessons",lessonRoutes);
-app.use("/api/materials",materialRoutes);
 app.use("/api/upload",uploadRoutes);
 
 //Home route
