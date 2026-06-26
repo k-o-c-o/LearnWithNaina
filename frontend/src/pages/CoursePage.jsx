@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { getLessons } from "../services/lessonService";
+import "../styles/CoursePage.css";
 
 function CoursePage() {
   const navigate = useNavigate();
@@ -24,30 +25,64 @@ function CoursePage() {
 
   return (
     <>
-      <Navbar />
+        <Navbar />
 
-      <div className = "page-container" style={{ padding: "40px" }}>
-        <h1>Lessons</h1>
+        <div className="page-container">
 
-        {lessons.map((lesson) => (
-          <div
-            key={lesson._id}
-            onClick={() =>
-                navigate(
-                `/lesson/${lesson._id}`
-                )
-            }
-            style={{
-                border: "1px solid #ddd",
-                padding: "20px",
-                marginBottom: "20px",
-                cursor: "pointer"
-            }}
-            >
-            {lesson.title}
-          </div>
-        ))}
-      </div>
+            <div className="dashboard-header">
+
+                <h1>Lessons</h1>
+
+                <p>
+                    Follow the lessons below to complete this course.
+                </p>
+
+            </div>
+
+            {lessons.length === 0 ? (
+
+    <div className="empty-state">
+
+        <h2>No lessons available</h2>
+
+        <p>
+            Lessons will appear here once they are added.
+        </p>
+
+    </div>
+
+) : (
+
+<div className="lesson-grid">
+
+                {lessons.map((lesson, index) => (
+
+                    <div
+                        key={lesson._id}
+                        className="lesson-card"
+                        onClick={() =>
+                            navigate(`/lesson/${lesson._id}`)
+                        }
+                    >
+
+                        <h2>
+                            📖 {lesson.title}
+                        </h2>
+
+                        <p>
+                            View Materials →
+                        </p>
+
+                    </div>
+
+                ))}
+
+                        </div>
+
+        )}
+
+        </div>
+
     </>
   );
 }

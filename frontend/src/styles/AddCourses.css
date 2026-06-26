@@ -5,7 +5,6 @@
 }
 
 .dashboard-container h1{
-    text-align:center;
     font-size:30px;
     margin-bottom:50px;
 }
@@ -77,26 +76,71 @@
 
 .enroll-btn{
 
-    background:#0b5d3b;
+    width:100%;
 
-    color:white;
+    padding:12px;
 
     border:none;
 
-    padding:12px 28px;
+    border-radius:10px;
 
-    border-radius:8px;
+    background:#0B5D3B;
+
+    color:white;
+
+    font-size:1rem;
+
+    font-weight:600;
 
     cursor:pointer;
 
-    font-size:16px;
-
-    transition:.3s;
+    transition:.25s;
 
 }
 
 .enroll-btn:hover{
 
-    background:#0d7348;
+    background:#14764c;
+
+    transform:translateY(-2px);
+
+}
+.dashboard-header{
+
+    margin-bottom:40px;
+
+}
+
+.dashboard-header h1{
+
+    color:#0B5D3B;
+
+    font-size:2.5rem;
+
+    margin-bottom:10px;
+
+}
+
+.dashboard-header p{
+
+    color:#6B7280;
+
+    font-size:1.1rem;
+
+}
+.course-content{
+
+    padding:24px;
+
+}
+.course-description{
+
+    color:#6B7280;
+
+    line-height:1.5;
+
+    margin:16px 0 24px;
+
+    min-height:50px;
 
 }

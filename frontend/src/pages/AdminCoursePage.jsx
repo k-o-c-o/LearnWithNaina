@@ -85,21 +85,6 @@ function AdminCoursePage() {
                     </>
                 }
 
-                {
-                    activeTab==="Students" &&
-
-                    <h2>
-                        Students Coming Soon...
-                    </h2>
-                }
-
-                {
-                    activeTab==="Grades" &&
-
-                    <h2>
-                        Grades Coming Soon...
-                    </h2>
-                }
 
             </div>
 

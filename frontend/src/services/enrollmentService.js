@@ -15,7 +15,7 @@ export const enrollStudent = async (
   return res.data;
 };
 
-export const getEnrollments = async (
+export const getStudentEnrollments = async (
   studentId
 ) => {
   const res = await api.get(
@@ -25,22 +25,3 @@ export const getEnrollments = async (
   return res.data;
 };
 
-export const getStudentsByCourse = async (courseId) => {
-  const res = await api.get(
-    `/enrollments/course/${courseId}`
-  );
-
-  return res.data;
-};
-
-export const addGrade = async (
-  enrollmentId,
-  grade
-) => {
-  const res = await api.post(
-    `/enrollments/grade/${enrollmentId}`,
-    grade
-  );
-
-  return res.data;
-};

@@ -1,0 +1,61 @@
+.lesson-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:30px;
+
+}
+
+.lesson-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:28px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.lesson-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 16px 32px rgba(0,0,0,.15);
+
+}
+
+.lesson-number{
+
+    color:#0B5D3B;
+
+    font-weight:700;
+
+    margin-bottom:16px;
+
+}
+
+.lesson-card h2{
+
+    margin-bottom:14px;
+
+    color:#1F2937;
+
+    font-size:1.5rem;
+
+}
+
+.lesson-card p{
+
+    color:#0B5D3B;
+
+    font-weight:600;
+
+}

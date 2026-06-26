@@ -11,7 +11,6 @@ import MaterialsPage from "./pages/MaterialsPage";
 import PDFViewer from "./pages/PDFViewer";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminOnly from "./components/AdminOnly";
-import StudentsEnrolled from "./pages/StudentsEnrolled";
 import AdminCoursePage from "./pages/AdminCoursePage";
 import LessonWorkspace from "./pages/LessonWorkspace";
 import AdminPDFViewer from "./pages/AdminPDFViewer";
@@ -30,7 +29,6 @@ function App() {
         <Route path="/lesson/:lessonId" element={<MaterialsPage />}/>
         <Route path="/material/:lessonId/:pdfIndex" element={<PDFViewer />}/>
         <Route path="/admin" element={<AdminOnly> <AdminDashboard /> </AdminOnly>}/>
-        <Route path="/admin/course/:courseId/students" element={ <AdminOnly> <StudentsEnrolled/> </AdminOnly>}/>
         <Route path="/admin/course/:courseId" element={<AdminOnly> <AdminCoursePage/></AdminOnly>}/>
         <Route path="/admin/lesson/:lessonId" element={ <AdminOnly><LessonWorkspace /></AdminOnly>}/>
         <Route path="/admin/pdf/:lessonId/:pdfIndex"element={<AdminOnly><AdminPDFViewer /> </AdminOnly>}/>

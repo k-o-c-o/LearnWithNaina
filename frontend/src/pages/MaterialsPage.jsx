@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { getLesson } from "../services/lessonService";
+import "../styles/CoursePage.css";
 
 function MaterialsPage() {
     const navigate = useNavigate();
@@ -30,30 +31,53 @@ function MaterialsPage() {
         <>
             <Navbar />
 
-            <div style={{ padding: "40px" }}>
-                <h1>{lesson.title}</h1>
+            <div className="page-container">
 
-                {lesson.pdfs.length === 0 ? (
-                    <p>No PDFs uploaded yet.</p>
-                ) : (
-                    lesson.pdfs.map((pdf, index) => (
-                        <div
-                            key={index}
-                            onClick={() =>
-                                navigate(`/material/${lessonId}/${index}`)
-                            }
-                            style={{
-                                border: "1px solid #ddd",
-                                padding: "20px",
-                                marginBottom: "20px",
-                                cursor: "pointer"
-                            }}
-                        >
-                            📄 {pdf.title}
-                        </div>
-                    ))
-                )}
+              <div className="dashboard-header">
+
+                  <h1>Materials</h1>
+
+                  <p>
+                      Select a document to begin learning.
+                  </p>
+
+              </div>
+
+              {lesson.pdfs.length === 0 ? (
+
+                  <div className="empty-state">
+
+                      <h2>No materials available</h2>
+
+                  </div>
+
+              ) : (
+
+                  <div className="lesson-grid">
+
+                      {lesson.pdfs.map((pdf, index) => (
+
+                          <div
+                              key={index}
+                              className="lesson-card"
+                              onClick={() =>
+                                  navigate(`/material/${lessonId}/${index}`)
+                              }
+                          >
+
+                              <h2>📄 {pdf.title}</h2>
+
+                          </div>
+
+                      ))}
+
+                  </div>
+
+                 )}
+
             </div>
+                    
+                
         </>
     );
 }

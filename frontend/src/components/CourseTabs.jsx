@@ -1,7 +1,7 @@
 import "../styles/CourseTabs.css";
 
 function CourseTabs({ activeTab, setActiveTab }) {
-  const tabs = ["Lessons", "Students", "Grades"];
+  const tabs = ["Lessons"];
 
   return (
     <div className="course-tabs">

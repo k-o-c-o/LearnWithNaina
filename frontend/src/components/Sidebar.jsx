@@ -14,19 +14,7 @@ function Sidebar() {
       <nav>
 
         <NavLink to="/admin">
-          Dashboard
-        </NavLink>
-
-        <NavLink to="/admin">
           Courses
-        </NavLink>
-
-        <NavLink to="/admin/students">
-          Students
-        </NavLink>
-
-        <NavLink to="/admin/grades">
-          Grades
         </NavLink>
 
       </nav>

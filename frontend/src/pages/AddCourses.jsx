@@ -27,9 +27,11 @@ async (courseId) => {
     await enrollStudent(
       user.id,
       courseId
-    );
+  );
 
-    alert("Enrolled Successfully");
+  alert("Enrolled Successfully");
+
+  loadCourses();
   } catch (error) {
     alert(
         error.response?.data?.message ||
@@ -44,9 +46,28 @@ async (courseId) => {
 
         <div className="dashboard-container">
 
-    <h1>AVAILABLE COURSES</h1>
+    <div className="dashboard-header">
 
-    <div className="course-grid">
+    <h1>Available Courses</h1>
+
+    <p>
+        Discover new courses.
+    </p>
+
+    </div>
+
+    {courses.length === 0 ? (
+
+    <div className="empty-state">
+
+        <h2>No courses available</h2>
+
+
+    </div>
+
+) : (
+
+<div className="course-grid">
 
         {courses.map((course) => (
 
@@ -70,11 +91,11 @@ async (courseId) => {
                     </p>
 
                     <button
-                        className="enroll-btn"
-                        onClick={() => handleEnroll(course._id)}
-                    >
-                        Enroll
-                    </button>
+                      className="enroll-btn"
+                      onClick={() => handleEnroll(course._id)}
+                  >
+                      + Enroll
+                  </button>
 
                 </div>
 
@@ -82,10 +103,13 @@ async (courseId) => {
 
         ))}
 
-    </div>
+        </div>
+
+)}
+
 
 </div>
-    
+
     </>
   );
 }

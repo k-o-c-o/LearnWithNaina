@@ -16,35 +16,35 @@ function Navbar() {
   return (
     <nav className="navbar">
 
-    <div className="navbar-content">
+        <div className="navbar-content">
 
-        <div className="logo">
-            Learn with Naina
-        </div>
-
-        <div className="nav-links">
-
-            <Link to="/dashboard">
-                My Courses
+            <Link to="/dashboard" className="logo">
+                Learn<span>with Naina</span>
             </Link>
 
-            <Link to="/add-courses">
-                Add Courses
-            </Link>
+            <div className="nav-links">
 
-            <button
-                className="logout-btn"
-                onClick={logout}
-            >
-                Logout
-            </button>
+                <Link to="/dashboard">
+                    My Courses
+                </Link>
+
+                <Link to="/add-courses">
+                    Add Courses
+                </Link>
+
+                <button
+                    className="logout-btn"
+                    onClick={logout}
+                >
+                    Logout
+                </button>
+
+            </div>
 
         </div>
 
-    </div>
-
-</nav>
-  );
+    </nav>
+);
 }
 
 export default Navbar;

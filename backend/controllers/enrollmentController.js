@@ -48,47 +48,9 @@ const getStudentEnrollments = async (
   }
 };
 
-const getStudentsByCourse = async (req, res) => {
-  try {
-    const enrollments = await Enrollment.find({
-      courseId: req.params.courseId,
-    }).populate("studentId", "name email");
 
-    res.json(enrollments);
-  } catch (error) {
-    res.status(500).json({
-      message: error.message,
-    });
-  }
-};
-
-const addGrade = async (req, res) => {
-  try {
-    const { testName, dateConducted, gradeReceived } = req.body;
-
-    const enrollment = await Enrollment.findById(
-      req.params.enrollmentId
-    );
-
-    enrollment.grades.push({
-      testName,
-      dateConducted,
-      gradeReceived,
-    });
-
-    await enrollment.save();
-
-    res.json(enrollment);
-  } catch (error) {
-    res.status(500).json({
-      message: error.message,
-    });
-  }
-};
 
 module.exports = {
   enrollStudent,
   getStudentEnrollments,
-  getStudentsByCourse,
-  addGrade,
 };
