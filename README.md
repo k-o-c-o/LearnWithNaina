@@ -2,7 +2,7 @@
 
 A production ready full stack **Learning Management System (LMS)** developed to support my personal tutoring platform. The application digitizes my tutoring workflow by allowing students to securely enroll in courses, access structured lessons, and study PDF materials directly within the browser, while providing a dedicated tutor dashboard to create courses, organize lessons, and upload learning resources.
 
-The platform is **currently being used by three active students** to access course materials and lessons, providing practical experience in building, deploying, and maintaining software for real users. Although originally built for my own tutoring practice, its modular architecture makes it easily adaptable for schools, coaching centers, or online education platforms.
+The platform is **currently being used by three active students** to access course materials and lessons. Although originally built for my own tutoring practice, its modular architecture makes it easily adaptable for schools, coaching centers, or online education platforms.
 
 ---
 
