@@ -1,4 +1,4 @@
-# Learn With Naina
+# 🌿 Learn With Naina
 
 A production ready full stack **Learning Management System (LMS)** developed to support my personal tutoring platform. The application digitizes my tutoring workflow by allowing students to securely enroll in courses, access structured lessons, and study PDF materials directly within the browser, while providing a dedicated tutor dashboard to create courses, organize lessons, and upload learning resources.
 
