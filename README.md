@@ -1,8 +1,6 @@
-# 🌿 Learn With Naina
+# Learn With Naina
 
-# 🌿 Learn With Naina
-
-A production-ready full-stack **Learning Management System (LMS)** developed to support my personal tutoring platform. The application digitizes my tutoring workflow by allowing students to securely enroll in courses, access structured lessons, and study PDF materials directly within the browser, while providing a dedicated tutor dashboard to create courses, organize lessons, and upload learning resources.
+A production ready full stack **Learning Management System (LMS)** developed to support my personal tutoring platform. The application digitizes my tutoring workflow by allowing students to securely enroll in courses, access structured lessons, and study PDF materials directly within the browser, while providing a dedicated tutor dashboard to create courses, organize lessons, and upload learning resources.
 
 The platform is **currently being used by three active students** to access course materials and lessons, providing practical experience in building, deploying, and maintaining software for real users. Although originally built for my own tutoring practice, its modular architecture makes it easily adaptable for schools, coaching centers, or online education platforms.
 
@@ -10,16 +8,16 @@ The platform is **currently being used by three active students** to access cour
 
 ## ## ✨ Highlights
 
-- 👩‍🏫 Designed and developed a full-stack Learning Management System for my personal English tutoring platform.
-- 👥 Currently supporting **3 active students** using the platform for accessing course materials and lesson resources.
-- 🔐 Implemented secure JWT authentication with bcrypt password hashing and role-based authorization.
-- 📚 Built complete course enrollment and lesson management workflows for students.
-- 📄 Integrated an in-browser PDF reader with zoom controls for seamless learning.
-- ☁️ Implemented Cloudinary-based PDF storage with Multer for efficient file uploads.
-- 👨‍🏫 Developed separate Student and Tutor dashboards with protected routes.
-- 🔄 Built a RESTful backend using Express.js and MongoDB.
-- ⚛️ Created a responsive React application with React Router and Axios.
-- 🚀 Deployed the application using Render, Vercel and MongoDB Atlas.
+- Designed and developed a full stack Learning Management System for my personal English tutoring platform.
+- Currently supporting **3 active students** using the platform for accessing course materials and lesson resources.
+-  Implemented secure JWT authentication with bcrypt password hashing and role based authorization.
+- Built complete course enrollment and lesson management workflows for students.
+- Integrated a PDF reader with zoom controls for seamless learning.
+- Implemented Cloudinary based PDF storage with Multer for efficient file uploads.
+- Developed separate Student and Tutor dashboards with protected routes.
+- Built a RESTful backend using Express.js and MongoDB.
+- Created a responsive React application with React Router and Axios.
+- Deployed the application using Render, Vercel and MongoDB Atlas.
 
 ---
 
@@ -140,15 +138,19 @@ The platform is **currently being used by three active students** to access cour
 # 🏗 System Architecture
 
 ```text
-                 React Frontend
-                       │
-                       │ REST API
-                       ▼
-                Express.js Backend
-                 /       |       \
-                /        |        \
-               ▼         ▼         ▼
-        MongoDB Atlas  Cloudinary  JWT Auth
+                    Student / Tutor
+                           │
+                           ▼
+                    React Frontend
+                           │
+                    Axios / REST API
+                           │
+                           ▼
+                 Express.js Backend
+        (JWT Authentication & Authorization)
+                 │                │
+                 ▼                ▼
+          MongoDB Atlas      Cloudinary
 ```
 
 ---
