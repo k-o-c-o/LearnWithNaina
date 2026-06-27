@@ -6,7 +6,7 @@ The platform is **currently being used by three active students** to access cour
 
 ---
 
-## ## ✨ Highlights
+## ✨ Highlights
 
 - Designed and developed a full stack Learning Management System for my personal English tutoring platform.
 - Currently supporting **3 active students** using the platform for accessing course materials and lesson resources.
